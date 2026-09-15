@@ -1,0 +1,15 @@
+# PlatformIO build artifacts
+.pio/
+.pioenvs/
+.piolibdeps/
+.clangd/
+
+# Project-specific files
+.DS_Store
+
+# IDE-specific files
+.vscode/
+
+# Other files
+compile_commands.json
+.cache/
