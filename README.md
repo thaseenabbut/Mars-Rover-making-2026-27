@@ -17,12 +17,11 @@ The competition has two stages:
 
 - ESP32-S3 (DevKitC-1)
 - 6x 12V DC gearmotors with encoders, 300RPM, regular (non-mecanum) wheels
-- 2x L298N motor drivers — one drives 4 motors (front-left + mid-left
-  paired on one channel, front-right + mid-right paired on the other), the
-  other drives the 2 independent rear motors
+- 2x L298N motor drivers — Driver 1 drives the paired front-left + middle-left
+  wheels on one channel and front-right + middle-right wheels on the other;
+  Driver 2 drives the independent rear-left and rear-right wheels
 - 3x HC-SR04 ultrasonic sensors (left / center / right) for obstacle
   detection
-- MPU6050 IMU
 - 11.1V 3S LiPo battery + LM2596 buck converter (5V logic rail)
 - Control app: a generic BLE controller app (Nordic UART Service),
   sending single-character commands
@@ -53,7 +52,7 @@ and steers proportionally toward whichever side has more open space,
 scaling speed down smoothly as obstacles get closer, with gradual
 (non-jumpy) PWM changes rather than a stop-detect-then-turn approach.
 
-Live telemetry (sensor distances, encoder counts, IMU data) streams over
+Live telemetry (sensor distances and encoder counts) streams over
 BLE continuously in both modes.
 
 ## Building / flashing
