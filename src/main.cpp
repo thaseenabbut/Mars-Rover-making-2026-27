@@ -228,6 +228,7 @@ static uint8_t       reverseBurstCount = 0;
 // ═══════════════════════════════════════════════════════════════════════════════
 
 // Standard NUS UUIDs
+#define BLE_DEVICE_NAME        "RedRovers"
 #define NUS_SERVICE_UUID        "6e400001-b5a3-f393-e0a9-e50e24dcca9e"
 #define NUS_RX_CHAR_UUID        "6e400002-b5a3-f393-e0a9-e50e24dcca9e"  // write (app → rover)
 #define NUS_TX_CHAR_UUID        "6e400003-b5a3-f393-e0a9-e50e24dcca9e"  // notify (rover → app)
@@ -321,7 +322,7 @@ static void setupBLE() {
   Serial.println("[BLE] Initialising BLE stack...");
 
   // 1. Initialise with device name BEFORE anything else
-  BLEDevice::init("RedRovers");
+  BLEDevice::init(BLE_DEVICE_NAME);
 
   // 2. Create server + set callbacks
   BLEServer* pServer = BLEDevice::createServer();
@@ -354,7 +355,7 @@ static void setupBLE() {
   pAdvertising->setMinPreferred(0x12);
   BLEDevice::startAdvertising();
 
-  Serial.println("[BLE] Advertising started - device name: \"RedRovers\"");
+  Serial.printf("[BLE] Advertising started - device name: \"%s\"\n", BLE_DEVICE_NAME);
   Serial.printf("[BLE]   NUS Service UUID : %s\n", NUS_SERVICE_UUID);
   Serial.printf("[BLE]   RX Char UUID     : %s\n", NUS_RX_CHAR_UUID);
   Serial.printf("[BLE]   TX Char UUID     : %s\n", NUS_TX_CHAR_UUID);
